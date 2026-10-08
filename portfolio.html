@@ -1,0 +1,835 @@
+<!doctype html>
+
+<html
+  class="scroll-smooth"
+  lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0"
+      name="viewport" />
+    <title>Gihara</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@200..800&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              error: "#ba1a1a",
+              "on-primary": "#ffffff",
+              "surface-dim": "#dbd9da",
+              "on-tertiary-container": "#9f7a87",
+              "primary-fixed-dim": "#fbb3c2",
+              "on-surface": "#1b1c1d",
+              "on-error-container": "#93000a",
+              "on-primary-fixed-variant": "#6a3744",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#360c19",
+              "primary-container": "#360c19",
+              tertiary: "#000000",
+              "on-tertiary-fixed": "#2d141e",
+              surface: "#fbf9fa",
+              secondary: "#755661",
+              "surface-bright": "#fbf9fa",
+              "surface-container-highest": "#e4e2e3",
+              background: "#fbf9fa",
+              "on-error": "#ffffff",
+              "outline-variant": "#d5c2c4",
+              "surface-variant": "#e4e2e3",
+              "secondary-fixed": "#ffd9e4",
+              "secondary-container": "#ffd5e2",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#864e5b",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#7a5a65",
+              "inverse-primary": "#fbb3c2",
+              "secondary-fixed-dim": "#e4bcc9",
+              "on-secondary-fixed": "#2c141e",
+              "inverse-surface": "#303031",
+              "surface-container-low": "#f5f3f4",
+              "tertiary-fixed": "#ffd9e5",
+              "on-background": "#1b1c1d",
+              "primary-fixed": "#ffd9e0",
+              "on-primary-container": "#b07280",
+              "inverse-on-surface": "#f2f0f1",
+              "tertiary-fixed-dim": "#e6bbc9",
+              outline: "#837376",
+              "on-secondary-fixed-variant": "#5c3f49",
+              "on-surface-variant": "#514346",
+              "surface-container": "#efedee",
+              primary: "#000000",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e9e8e9",
+              "on-tertiary-fixed-variant": "#5d3e4a",
+              "tertiary-container": "#2d141e",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              unit: "8px",
+              "section-gap": "160px",
+              gutter: "32px",
+              "margin-mobile": "24px",
+              "container-max": "1280px",
+              "margin-desktop": "64px",
+            },
+            fontFamily: {
+              "headline-lg": ["Libre Caslon Text"],
+              "headline-md": ["Libre Caslon Text"],
+              "body-md": ["Manrope"],
+              "body-lg": ["Manrope"],
+              display: ["Libre Caslon Text"],
+              "label-sm": ["Manrope"],
+              "label-md": ["Manrope"],
+              "headline-lg-mobile": ["Libre Caslon Text"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  fontWeight: "400",
+                },
+              ],
+              "headline-md": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  fontWeight: "400",
+                },
+              ],
+              "body-md": [
+                "16px",
+                {
+                  lineHeight: "26px",
+                  fontWeight: "400",
+                },
+              ],
+              "body-lg": [
+                "20px",
+                {
+                  lineHeight: "32px",
+                  fontWeight: "400",
+                },
+              ],
+              display: [
+                "80px",
+                {
+                  lineHeight: "96px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "400",
+                },
+              ],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.1em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  fontWeight: "500",
+                },
+              ],
+              "headline-lg-mobile": [
+                "36px",
+                {
+                  lineHeight: "44px",
+                  fontWeight: "400",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -2px;
+        left: 50%;
+        background-color: currentColor;
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-50%);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .project-card {
+        transition: all 0.4s ease-out;
+      }
+      .project-card:hover {
+        box-shadow: 0 20px 40px rgba(51, 10, 23, 0.05);
+      }
+      .project-image-container {
+        overflow: hidden;
+      }
+      .project-image {
+        transition: transform 0.6s ease-out;
+      }
+      .project-card:hover .project-image {
+        transform: scale(1.05);
+      }
+      .project-title {
+        transition: transform 0.4s ease-out;
+      }
+      .project-card:hover .project-title {
+        transform: translateX(8px);
+      }
+      input:focus,
+      textarea:focus {
+        border-bottom-color: #360c19 !important;
+        outline: none;
+      }
+      .typewriter {
+        overflow: hidden;
+        border-right: 0.15em solid #784757;
+        white-space: nowrap;
+        animation:
+          typing 2.5s steps(15, end),
+          blink-caret 0.75s step-end infinite;
+        display: inline-block;
+        max-width: fit-content;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #784757;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+    <!-- TopNavBar -->
+    <header
+      class="fixed top-0 w-full z-50 border-b border-outline-variant/30 ease-in-out transition-all duration-500"
+      style="background-color: rgb(51, 10, 23)">
+      <div
+        class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <a
+          class="font-display text-display"
+          href="#"
+          style="font-size: 32px; line-height: 40px; color: rgb(251, 249, 250)"
+          >Gihara</a
+        >
+        <nav class="hidden md:flex space-x-gutter items-center">
+          <a
+            class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-body-md font-label-md text-label-md uppercase tracking-wider nav-link text-surface"
+            href="#about"
+            >About</a
+          >
+          <a
+            class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-body-md font-label-md text-label-md uppercase tracking-wider nav-link text-surface"
+            href="#education"
+            >Education</a
+          >
+          <a
+            class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-body-md font-label-md text-label-md uppercase tracking-wider nav-link text-surface"
+            href="#experience"
+            >Experience</a
+          >
+          <a
+            class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-body-md font-label-md text-label-md uppercase tracking-wider nav-link text-surface"
+            href="#skills"
+            >Skills</a
+          >
+          <a
+            class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-body-md font-label-md text-label-md uppercase tracking-wider nav-link text-surface"
+            href="#work"
+            >Work</a
+          >
+          <a
+            class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-body-md font-label-md text-label-md uppercase tracking-wider nav-link text-surface"
+            href="#contact"
+            >Contact</a
+          >
+        </nav>
+        <div class="hidden md:flex items-center space-x-4 ml-gutter">
+          <a
+            class="text-surface/80 hover:text-surface transition-all duration-300"
+            href="mailto:gihara04@gmail.com">
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewbox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+            </svg>
+          </a>
+          <a
+            class="text-surface/80 hover:text-surface transition-all duration-300"
+            href="https://github.com/Giharaa"
+            target="_blank">
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewbox="0 0 24 24">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+            </svg>
+          </a>
+          <a
+            class="text-surface/80 hover:text-surface transition-all duration-300"
+            href="https://linkedin.com/in/gihara-gunasekara-11720b212"
+            target="_blank">
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewbox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+            </svg>
+          </a>
+        </div>
+        <!-- Mobile Menu Button (simplified for aesthetic) -->
+        <button
+          class="md:hidden"
+          style="color: rgb(251, 249, 250)">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </header>
+    <main class="pt-20">
+      <!-- Hero Section -->
+      <section
+        class="min-h-[90vh] flex items-center px-margin-mobile md:px-margin-desktop py-section-gap relative overflow-hidden"
+        style="background-color: #330a17">
+        <div
+          class="max-w-container-max mx-auto w-full relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div class="md:col-span-8 flex flex-col justify-center items-start">
+            <h1
+              class="font-display text-headline-lg-mobile md:text-display mb-unit-4 typewriter"
+              style="color: rgb(120, 71, 87)">
+              Hi, I am
+              <span
+                class=""
+                style="
+                  color: rgb(171, 135, 147);
+                  border-bottom: 2px solid rgb(171, 135, 147);
+                  padding-bottom: 2px;
+                "
+                >Gihara</span
+              >
+            </h1>
+            <p
+              class="font-body-lg text-body-lg max-w-2xl"
+              style="color: rgb(120, 71, 87)">
+              A Creative Designer &amp; Developer crafting digital experiences
+              that blend high-end editorial aesthetics with modern performance.
+            </p>
+          </div>
+        </div>
+        <!-- Decorative Element -->
+        <div
+          class="absolute top-1/4 right-[-10%] w-[500px] h-[500px] rounded-full bg-primary-fixed-dim/20 blur-3xl mix-blend-multiply pointer-events-none"></div>
+      </section>
+      <!-- About Me Section -->
+      <section
+        class="px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto"
+        id="about">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+          <div class="md:col-span-5 mb-gutter md:mb-0">
+            <div
+              class="aspect-[4/5] w-full bg-surface-container-high rounded-sm overflow-hidden relative">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="A sophisticated black and white or muted color palette portrait of a modern digital creative professional. The subject is in a minimalist, light-filled studio space, looking confident but approachable. The lighting is soft and cinematic, emphasizing a premium, editorial aesthetic. The overall mood is calm, authoritative, and artistic, aligning with a high-end design portfolio."
+                src="img/DSC05072.jpg.jpeg" />
+            </div>
+          </div>
+          <div class="md:col-span-1"></div>
+          <div class="md:col-span-6">
+            <h2
+              class="font-headline-md text-headline-md text-primary mb-gutter">
+              About me
+            </h2>
+            <div
+              class="space-y-6 font-body-lg font-body-lg text-body-lg text-on-surface-variant">
+              <p class="">
+                I believe in the luxury of space. My work focuses on minimalist
+                principles, utilizing expansive whitespace to let content
+                breathe while grounding the interface with sophisticated,
+                intentional color palettes.
+              </p>
+              <p class="">
+                With a background spanning both visual design and frontend
+                architecture, I bridge the gap between artistic vision and
+                technical execution, ensuring every interaction feels deliberate
+                and high-touch.
+              </p>
+            </div>
+            <a
+              class="inline-block mt-gutter border-b border-primary text-primary font-label-md text-label-md uppercase tracking-wider pb-1 hover:text-secondary transition-colors duration-300"
+              href="#work"
+              >Resume</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Education Section -->
+      <section
+        class="bg-surface-container-low px-margin-mobile md:px-margin-desktop py-section-gap"
+        id="education">
+        <div class="max-w-container-max mx-auto">
+          <h2
+            class="font-headline-md text-headline-md text-primary mb-gutter text-center md:text-left">
+            Education
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <!-- Tab Navigation -->
+            <div class="md:col-span-3 flex flex-col space-y-4">
+              <button
+                class="edu-tab-btn text-left font-label-md text-label-md uppercase tracking-widest pt-2 pb-2 border-l-2 border-primary text-primary transition-all duration-300 px-4 bg-primary/5"
+                id="tab-btn-edu-1"
+                onclick="switchTab('edu-1')">
+                2025 — Present
+              </button>
+              <button
+                class="edu-tab-btn text-left font-label-md text-label-md uppercase tracking-widest pt-2 pb-2 border-l-2 border-transparent text-secondary hover:text-primary transition-all duration-300 px-4"
+                id="tab-btn-edu-2"
+                onclick="switchTab('edu-2')">
+                2021 — 2023
+              </button>
+              <button
+                class="edu-tab-btn text-left font-label-md text-label-md uppercase tracking-widest pt-2 pb-2 border-l-2 border-transparent text-secondary hover:text-primary transition-all duration-300 px-4"
+                id="tab-btn-edu-3"
+                onclick="switchTab('edu-3')">
+                2015 — 2021
+              </button>
+            </div>
+            <!-- Tab Content -->
+            <div class="md:col-span-9">
+              <div
+                class="edu-content block border-t border-outline-variant/30 pt-6 pb-12 transition-opacity duration-500"
+                id="edu-1">
+                <h3
+                  class="font-headline-md font-body-lg text-body-lg text-primary mb-2">
+                  Bachelor of Science in Information Systems
+                </h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                  University of Colombo School of Computing
+                </p>
+              </div>
+              <div
+                class="edu-content hidden border-t border-outline-variant/30 pt-6 pb-12 transition-opacity duration-500"
+                id="edu-2">
+                <h3
+                  class="font-headline-md font-body-lg text-body-lg text-primary mb-2">
+                  G.C.E. Advance Level - Commerce Stream
+                </h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                  Devi Balika Vidyalaya - Colombo 08
+                </p>
+              </div>
+              <div
+                class="edu-content hidden border-t border-outline-variant/30 pt-6 pb-12 transition-opacity duration-500"
+                id="edu-3">
+                <h3
+                  class="font-headline-md font-body-lg text-body-lg text-primary mb-2">
+                  G.C.E. Ordinary Level
+                </h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                  Mahinda Rajapaksha College - Homagama
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Experience Section -->
+      <section
+        class="px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto"
+        id="experience">
+        <h2
+          class="font-headline-md text-headline-md text-primary mb-gutter text-center md:text-left">
+          Experience
+        </h2>
+        <!-- <div class="space-y-16">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <div class="md:col-span-3">
+              <p
+                class="font-label-md text-label-md text-secondary uppercase tracking-widest">
+                2022 — Present
+              </p>
+              <p class="font-body-md text-body-md text-primary mt-1">
+                Studio Nord
+              </p>
+            </div>
+            <div class="md:col-span-9">
+              <h3
+                class="font-headline-md font-body-lg text-body-lg text-primary mb-4">
+                Senior Digital Designer
+              </h3>
+              <p
+                class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+                Leading creative direction for premium digital platforms.
+                Spearheaded the redesign of flagship e-commerce experiences,
+                resulting in a 40% increase in user engagement. Mentoring junior
+                designers and establishing robust design systems.
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-gutter border-t border-outline-variant/30 pt-16">
+            <div class="md:col-span-3">
+              <p
+                class="font-label-md text-label-md text-secondary uppercase tracking-widest">
+                2020 — 2022
+              </p>
+              <p class="font-body-md text-body-md text-primary mt-1">
+                Creative Agency NYC
+              </p>
+            </div>
+            <div class="md:col-span-9">
+              <h3
+                class="font-headline-md font-body-lg text-body-lg text-primary mb-4">
+                UI/UX Designer
+              </h3>
+              <p
+                class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+                Designed end-to-end user flows for various fintech and lifestyle
+                brands. Collaborated closely with engineering teams to ensure
+                pixel-perfect implementation of high-fidelity prototypes.
+              </p>
+            </div>
+          </div>
+        </div> -->
+      </section>
+      <!-- Skills Section -->
+      <section
+        class="bg-surface-container px-margin-mobile md:px-margin-desktop py-section-gap"
+        id="skills">
+        <div
+          class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <div>
+            <h2 class="font-headline-md text-headline-md text-primary mb-8">
+              Technical Skills
+            </h2>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="px-4 py-2 bg-primary/10 text-primary font-label-sm text-label-sm uppercase rounded-sm border border-primary/20"
+                >HTML</span
+              >
+              <span
+                class="px-4 py-2 bg-primary/10 text-primary font-label-sm text-label-sm uppercase rounded-sm border border-primary/20"
+                >CSS</span
+              >
+              <span
+                class="px-4 py-2 bg-primary/10 text-primary font-label-sm text-label-sm uppercase rounded-sm border border-primary/20"
+                >Java Script</span
+              >
+              <span
+                class="px-4 py-2 bg-primary/10 text-primary font-label-sm text-label-sm uppercase rounded-sm border border-primary/20"
+                >Figma</span
+              >
+              <span
+                class="px-4 py-2 bg-primary/10 text-primary font-label-sm text-label-sm uppercase rounded-sm border border-primary/20"
+                >Stitch</span
+              >
+              <span
+                class="px-4 py-2 bg-primary/10 text-primary font-label-sm text-label-sm uppercase rounded-sm border border-primary/20"
+                >React &amp; Next.js</span
+              >
+              <span
+                class="px-4 py-2 bg-primary/10 text-primary font-label-sm text-label-sm uppercase rounded-sm border border-primary/20"
+                >Tailwind CSS</span
+              >
+            </div>
+          </div>
+          <div class="mt-12 md:mt-0">
+            <h2 class="font-headline-md text-headline-md text-primary mb-8">
+              Soft Skills
+            </h2>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="px-4 py-2 bg-surface-tint/10 text-on-surface font-label-sm text-label-sm uppercase rounded-sm border border-surface-tint/20"
+                >Art Direction</span
+              >
+              <span
+                class="px-4 py-2 bg-surface-tint/10 text-on-surface font-label-sm text-label-sm uppercase rounded-sm border border-surface-tint/20"
+                >Design Systems</span
+              >
+              <span
+                class="px-4 py-2 bg-surface-tint/10 text-on-surface font-label-sm text-label-sm uppercase rounded-sm border border-surface-tint/20"
+                >Cross-functional Collaboration</span
+              >
+              <span
+                class="px-4 py-2 bg-surface-tint/10 text-on-surface font-label-sm text-label-sm uppercase rounded-sm border border-surface-tint/20"
+                >Leadership</span
+              >
+              <span
+                class="px-4 py-2 bg-surface-tint/10 text-on-surface font-label-sm text-label-sm uppercase rounded-sm border border-surface-tint/20"
+                >Strategic Thinking</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Work Section -->
+      <section
+        class="px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto"
+        id="work">
+        <h2
+          class="font-headline-md text-headline-md text-primary mb-gutter text-center">
+          Selected Works
+        </h2>
+        <!-- <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mt-16">
+          //Project 1 (Full width)
+          <div class="md:col-span-12 group project-card cursor-pointer mb-16">
+            <div
+              class="project-image-container aspect-[21/9] bg-surface-variant w-full mb-6">
+              <img
+                class="project-image w-full h-full object-cover"
+                data-alt="A highly stylized, minimalist mockup of an editorial e-commerce website displayed on a sleek modern laptop. The interface features expansive whitespace, large elegant typography, and high-quality fashion imagery. The scene is lit softly with a clean, light-mode aesthetic, utilizing deep plum and mauve accents against pristine white backgrounds. It feels premium, curated, and highly professional."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuKXtFcrF7UoI1i3ptWdxTDom4KrGtkIocsTRdn83CE4gwY1Jym6y3O79MlW7PshrouEw9JJk-8gBwkmK3xavMYlM5Sys44RB7Ec7w9iSkgsyy_zFYRAQRRW43UVMaslsNk1qzDKLV2yXXIp7uF7-12MZjYaGrqhPvDYAPgnoZUqVGAFb2rEqhQxGUUT25ipaAK7lW6xVcEvsy1jlO_7sWbdrjr0oKktGQN-9-GzShUr340t0ukOiuVg" />
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <h3
+                  class="font-headline-md text-headline-md text-primary mb-2 project-title">
+                  Aura E-Commerce Redesign
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                  A complete structural and visual overhaul of a luxury
+                  fragrance brand's digital storefront, focusing on immersive
+                  storytelling and seamless conversion.
+                </p>
+              </div>
+              <span
+                class="hidden md:inline-block px-3 py-1 bg-primary/5 text-primary font-label-sm text-label-sm uppercase"
+                >Case Study</span
+              >
+            </div>
+          </div>
+          //Project 2 (Half width)
+          <div
+            class="md:col-span-6 group project-card cursor-pointer mb-16 md:mb-0">
+            <div
+              class="project-image-container aspect-square bg-surface-variant w-full mb-6">
+              <img
+                class="project-image w-full h-full object-cover"
+                data-alt="A close-up abstract shot of a mobile application interface focused on typography and data visualization. The design uses a sophisticated, monochromatic-adjacent palette of mauves and deep burgundy. The layout is clean, grid-based, and highly modern, evoking a sense of calm authority suitable for a premium fintech or lifestyle management tool. Soft ambient lighting highlights the digital surface."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFWoaLm0qj_4rYbeIxCr9iagALajFEaH4ZdCu9gigYNsHgQ2vAd11FbA-wz4yzYtt_KmbdDxlVJPZ5CO7u2eikfejmBvmJCPM3qesn1Sxu0D58eKG6w70N1UFqVQxZDqMU8J2u4tlgdFRQ9pyLAbIGim0dUtVxP0It4MQOJTvh2vE2uxujx4B6XUnYxyNixFgy_xUSXsZA6pqL9s4Gu0qU56kY9q0ZQ6dAqEWTzwDiOvSgt6-4G0kyHg" />
+            </div>
+            <h3
+              class="font-headline-md text-headline-md text-primary mb-2 project-title"
+              style="font-size: 24px; line-height: 32px">
+              Lumina Financial App
+            </h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Translating complex financial data into a serene, understandable
+              mobile experience for high-net-worth individuals.
+            </p>
+          </div>
+          //Project 3 (Half width)
+          <div class="md:col-span-6 group project-card cursor-pointer">
+            <div
+              class="project-image-container aspect-square bg-surface-variant w-full mb-6">
+              <img
+                class="project-image w-full h-full object-cover"
+                data-alt="An elegant branding presentation featuring stationery, a business card, and a minimalist digital tablet interface arranged on a smooth, pale mauve surface. The branding utilizes a striking deep plum logo and typography. The lighting is editorial, creating soft, diffused shadows that provide depth without harsh contrast. The overall aesthetic is high-end, minimal, and meticulously curated."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXVUaTym59GLZSgc_rxSzyXYwLwemJBUGNbzd5qMtE_9nnGSKtjv0RAImiIJNJeze2xnECMOxhOqIk0mud1bQjNuxbQMcV5U_YXQHbjXzuDR2CIjNr6rFd9G69R8cRyt_VuVAuOMkUG3dpruQj6SPGqwOgUFpaUe1V7oCZkX0UtzVywttB-i8NP1yvLATjjaPfn5VjdABZzh9541xeIVIqmiIzA8envp1YDfc3j4opYsy59IzZFOh8mg" />
+            </div>
+            <h3
+              class="font-headline-md text-headline-md text-primary mb-2 project-title"
+              style="font-size: 24px; line-height: 32px">
+              Vesper Brand Identity
+            </h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Developing a cohesive visual language from print to digital for an
+              emerging contemporary art gallery.
+            </p>
+          </div>
+        </div> -->
+      </section>
+      <!-- Contact Section -->
+      <section
+        class="bg-primary-container text-on-primary-container px-margin-mobile md:px-margin-desktop py-section-gap"
+        id="contact">
+        <div
+          class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div class="md:col-span-5 flex flex-col justify-between">
+            <div>
+              <h2
+                class="font-headline-md font-display text-display text-on-primary mb-6">
+                Let's build something beautiful.
+              </h2>
+              <p
+                class="font-body-lg text-body-lg text-on-primary-container/80 mb-12">
+                Currently available for freelance opportunities and
+                collaborative projects.
+              </p>
+            </div>
+            <div class="hidden md:block">
+              <p
+                class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary-container/60 mb-4">
+                Direct Inquiry
+              </p>
+              <a
+                class="font-body-lg text-body-lg text-on-primary hover:text-primary-fixed-dim transition-colors"
+                href="mailto:hello@gihara.design"
+                >gihara04@gmail.com</a
+              >
+            </div>
+          </div>
+          <div class="md:col-span-1"></div>
+          <div
+            class="md:col-span-6 bg-surface p-8 md:p-12 rounded-sm shadow-2xl shadow-primary-container/20">
+            <form class="space-y-8 text-on-surface">
+              <div>
+                <label
+                  class="block font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wide"
+                  for="name"
+                  >Name</label
+                >
+                <input
+                  class="w-full bg-transparent border-0 border-b border-[#AB8793]/30 px-0 py-2 focus:ring-0 transition-colors"
+                  id="name"
+                  placeholder="Your name"
+                  type="text" />
+              </div>
+              <div>
+                <label
+                  class="block font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wide"
+                  for="email"
+                  >Email</label
+                >
+                <input
+                  class="w-full bg-transparent border-0 border-b border-[#AB8793]/30 px-0 py-2 focus:ring-0 transition-colors"
+                  id="email"
+                  placeholder="name@example.com"
+                  type="email" />
+              </div>
+              <div>
+                <label
+                  class="block font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-wide"
+                  for="message"
+                  >Message</label
+                >
+                <textarea
+                  class="w-full bg-transparent border-0 border-b border-[#AB8793]/30 px-0 py-2 focus:ring-0 transition-colors resize-none"
+                  id="message"
+                  placeholder="Tell me about your project..."
+                  rows="4"></textarea>
+              </div>
+              <button
+                class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 uppercase tracking-widest hover:bg-[#451B29] transition-colors"
+                type="button">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="bg-surface-container-low dark:bg-tertiary-container text-on-surface dark:text-on-tertiary-fixed w-full py-unit-8 flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto ease-in-out transition-all duration-500">
+      <div
+        class="font-headline-md text-headline-md text-primary dark:text-on-primary-fixed mb-4 md:mb-0">
+        Gihara
+      </div>
+      <div
+        class="font-body-md text-body-md text-on-surface-variant mb-4 md:mb-0">
+        © 2026 Gihara Gunasekara
+      </div>
+      <div class="flex space-x-6">
+        <a
+          class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+          href="https://linkedin.com/in/gihara-gunasekara-11720b212"
+          traget="_blank"
+          >LinkedIn</a
+        >
+        <a
+          class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+          href="https://github.com/Giharaa"
+          target="_blank"
+          >GitHub</a
+        >
+        <a
+          class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+          href="https://medium.com/@gihara04"
+          target="_blank"
+          >Medium</a
+        >
+      </div>
+    </footer>
+    <script>
+      function switchTab(tabId) {
+        // Hide all content
+        document.querySelectorAll(".edu-content").forEach((content) => {
+          content.classList.add("hidden");
+          content.classList.remove("block");
+        });
+
+        // Show selected content
+        const activeContent = document.getElementById(tabId);
+        activeContent.classList.remove("hidden");
+        activeContent.classList.add("block");
+
+        // Reset all buttons
+        document.querySelectorAll(".edu-tab-btn").forEach((btn) => {
+          btn.classList.remove(
+            "border-primary",
+            "text-primary",
+            "bg-primary/5",
+          );
+          btn.classList.add("border-transparent", "text-secondary");
+        });
+
+        // Highlight active button
+        const activeBtn = document.getElementById("tab-btn-" + tabId);
+        activeBtn.classList.add(
+          "border-primary",
+          "text-primary",
+          "bg-primary/5",
+        );
+        activeBtn.classList.remove("border-transparent", "text-secondary");
+      }
+    </script>
+  </body>
+</html>
